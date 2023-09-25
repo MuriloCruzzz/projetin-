@@ -1,6 +1,6 @@
 ﻿namespace projeto2023.views.frms
 {
-    partial class frm_movimentacoes
+    partial class movimentacoes
     {
         /// <summary>
         /// Required designer variable.
@@ -28,27 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_movimentacoes));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(movimentacoes));
             this.pnl_movimentacoes = new System.Windows.Forms.Panel();
+            this.lbl_voltar = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btn_Materiais = new System.Windows.Forms.Button();
-            this.btn_Fornecedores = new System.Windows.Forms.Button();
-            this.btn_Pedidos = new System.Windows.Forms.Button();
-            this.btn_Clientes = new System.Windows.Forms.Button();
-            this.btn_colabores = new System.Windows.Forms.Button();
+            this.btn_Categorias = new System.Windows.Forms.Button();
+            this.btn_Transacoes = new System.Windows.Forms.Button();
+            this.btn_Fechamento = new System.Windows.Forms.Button();
+            this.btn_SangriaCaixa = new System.Windows.Forms.Button();
+            this.btn_contas = new System.Windows.Forms.Button();
             this.pctb_cadastros = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.btn_estoque = new System.Windows.Forms.Button();
             this.pnl_movimentacoes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctb_cadastros)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_movimentacoes
             // 
-            this.pnl_movimentacoes.Controls.Add(this.label2);
+            this.pnl_movimentacoes.Controls.Add(this.btn_estoque);
+            this.pnl_movimentacoes.Controls.Add(this.lbl_voltar);
+            this.pnl_movimentacoes.Controls.Add(this.btn_Categorias);
+            this.pnl_movimentacoes.Controls.Add(this.btn_Transacoes);
+            this.pnl_movimentacoes.Controls.Add(this.btn_contas);
+            this.pnl_movimentacoes.Controls.Add(this.btn_Fechamento);
+            this.pnl_movimentacoes.Controls.Add(this.btn_SangriaCaixa);
             this.pnl_movimentacoes.Location = new System.Drawing.Point(30, 71);
             this.pnl_movimentacoes.Name = "pnl_movimentacoes";
             this.pnl_movimentacoes.Size = new System.Drawing.Size(955, 623);
             this.pnl_movimentacoes.TabIndex = 4;
+            // 
+            // lbl_voltar
+            // 
+            this.lbl_voltar.AutoSize = true;
+            this.lbl_voltar.Font = new System.Drawing.Font("Lucida Sans", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_voltar.Location = new System.Drawing.Point(3, 596);
+            this.lbl_voltar.Name = "lbl_voltar";
+            this.lbl_voltar.Size = new System.Drawing.Size(89, 22);
+            this.lbl_voltar.TabIndex = 14;
+            this.lbl_voltar.Text = "VOLTAR";
+            this.lbl_voltar.Click += new System.EventHandler(this.lbl_voltar_Click);
             // 
             // label1
             // 
@@ -57,69 +75,68 @@
             this.label1.Font = new System.Drawing.Font("Lucida Sans", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(327, 105);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(515, 68);
+            this.label1.Size = new System.Drawing.Size(410, 55);
             this.label1.TabIndex = 19;
             this.label1.Text = "Movimentações";
             // 
-            // btn_Materiais
+            // btn_Categorias
             // 
-            this.btn_Materiais.Image = global::projeto2023.Properties.Resources.menu_btnEstoque;
-            this.btn_Materiais.Location = new System.Drawing.Point(684, 229);
-            this.btn_Materiais.Name = "btn_Materiais";
-            this.btn_Materiais.Size = new System.Drawing.Size(210, 136);
-            this.btn_Materiais.TabIndex = 18;
-            this.btn_Materiais.Text = "MATERIAIS";
-            this.btn_Materiais.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_Materiais.UseVisualStyleBackColor = true;
-            this.btn_Materiais.Click += new System.EventHandler(this.btn_Materiais_Click);
+            this.btn_Categorias.Image = global::projeto2023.Properties.Resources.menu_btnEstoque;
+            this.btn_Categorias.Location = new System.Drawing.Point(388, 369);
+            this.btn_Categorias.Name = "btn_Categorias";
+            this.btn_Categorias.Size = new System.Drawing.Size(210, 136);
+            this.btn_Categorias.TabIndex = 18;
+            this.btn_Categorias.Text = "CATEGORIAS";
+            this.btn_Categorias.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_Categorias.UseVisualStyleBackColor = true;
+            this.btn_Categorias.Click += new System.EventHandler(this.btn_Categorias_Click);
             // 
-            // btn_Fornecedores
+            // btn_Transacoes
             // 
-            this.btn_Fornecedores.Image = global::projeto2023.Properties.Resources.menu_btnFornecedor;
-            this.btn_Fornecedores.Location = new System.Drawing.Point(374, 229);
-            this.btn_Fornecedores.Name = "btn_Fornecedores";
-            this.btn_Fornecedores.Size = new System.Drawing.Size(211, 136);
-            this.btn_Fornecedores.TabIndex = 17;
-            this.btn_Fornecedores.Text = "FORNECEDORES";
-            this.btn_Fornecedores.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_Fornecedores.UseVisualStyleBackColor = true;
-            this.btn_Fornecedores.Click += new System.EventHandler(this.btn_Fornecedores_Click);
+            this.btn_Transacoes.Image = global::projeto2023.Properties.Resources.menu_btnFornecedor;
+            this.btn_Transacoes.Location = new System.Drawing.Point(696, 158);
+            this.btn_Transacoes.Name = "btn_Transacoes";
+            this.btn_Transacoes.Size = new System.Drawing.Size(211, 136);
+            this.btn_Transacoes.TabIndex = 17;
+            this.btn_Transacoes.Text = "TRANSAÇÕES";
+            this.btn_Transacoes.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_Transacoes.UseVisualStyleBackColor = true;
+            this.btn_Transacoes.Click += new System.EventHandler(this.btn_Transacoes_Click);
             // 
-            // btn_Pedidos
+            // btn_Fechamento
             // 
-            this.btn_Pedidos.Image = global::projeto2023.Properties.Resources.menu_btnListaProntos;
-            this.btn_Pedidos.Location = new System.Drawing.Point(374, 431);
-            this.btn_Pedidos.Name = "btn_Pedidos";
-            this.btn_Pedidos.Size = new System.Drawing.Size(211, 136);
-            this.btn_Pedidos.TabIndex = 16;
-            this.btn_Pedidos.Text = "PEDIDOS";
-            this.btn_Pedidos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_Pedidos.UseVisualStyleBackColor = true;
-            this.btn_Pedidos.Click += new System.EventHandler(this.btn_Pedidos_Click);
+            this.btn_Fechamento.Image = global::projeto2023.Properties.Resources.menu_btnListaProntos;
+            this.btn_Fechamento.Location = new System.Drawing.Point(69, 158);
+            this.btn_Fechamento.Name = "btn_Fechamento";
+            this.btn_Fechamento.Size = new System.Drawing.Size(211, 136);
+            this.btn_Fechamento.TabIndex = 16;
+            this.btn_Fechamento.Text = "FECHAMENTO";
+            this.btn_Fechamento.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_Fechamento.UseVisualStyleBackColor = true;
             // 
-            // btn_Clientes
+            // btn_SangriaCaixa
             // 
-            this.btn_Clientes.Image = global::projeto2023.Properties.Resources.menu_btnCliente;
-            this.btn_Clientes.Location = new System.Drawing.Point(35, 431);
-            this.btn_Clientes.Name = "btn_Clientes";
-            this.btn_Clientes.Size = new System.Drawing.Size(210, 136);
-            this.btn_Clientes.TabIndex = 15;
-            this.btn_Clientes.Text = "CLIENTES";
-            this.btn_Clientes.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_Clientes.UseVisualStyleBackColor = true;
-            this.btn_Clientes.Click += new System.EventHandler(this.btn_Clientes_Click);
+            this.btn_SangriaCaixa.Image = global::projeto2023.Properties.Resources.menu_btnCliente;
+            this.btn_SangriaCaixa.Location = new System.Drawing.Point(388, 158);
+            this.btn_SangriaCaixa.Name = "btn_SangriaCaixa";
+            this.btn_SangriaCaixa.Size = new System.Drawing.Size(210, 136);
+            this.btn_SangriaCaixa.TabIndex = 15;
+            this.btn_SangriaCaixa.Text = "SANGRIA";
+            this.btn_SangriaCaixa.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_SangriaCaixa.UseVisualStyleBackColor = true;
+            this.btn_SangriaCaixa.Click += new System.EventHandler(this.btn_SangriaCaixa_Click);
             // 
-            // btn_colabores
+            // btn_contas
             // 
-            this.btn_colabores.Image = global::projeto2023.Properties.Resources.menu_btnCliente;
-            this.btn_colabores.Location = new System.Drawing.Point(35, 229);
-            this.btn_colabores.Name = "btn_colabores";
-            this.btn_colabores.Size = new System.Drawing.Size(210, 136);
-            this.btn_colabores.TabIndex = 14;
-            this.btn_colabores.Text = "COLABORADORES";
-            this.btn_colabores.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_colabores.UseVisualStyleBackColor = true;
-            this.btn_colabores.Click += new System.EventHandler(this.btn_colabores_Click);
+            this.btn_contas.Image = global::projeto2023.Properties.Resources.menu_btnCliente;
+            this.btn_contas.Location = new System.Drawing.Point(70, 369);
+            this.btn_contas.Name = "btn_contas";
+            this.btn_contas.Size = new System.Drawing.Size(210, 136);
+            this.btn_contas.TabIndex = 14;
+            this.btn_contas.Text = "CONTAS";
+            this.btn_contas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_contas.UseVisualStyleBackColor = true;
+            this.btn_contas.Click += new System.EventHandler(this.btn_contas_Click);
             // 
             // pctb_cadastros
             // 
@@ -132,36 +149,32 @@
             this.pctb_cadastros.TabIndex = 13;
             this.pctb_cadastros.TabStop = false;
             // 
-            // label2
+            // btn_estoque
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Lucida Sans", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(3, 596);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(116, 27);
-            this.label2.TabIndex = 14;
-            this.label2.Text = "VOLTAR";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.btn_estoque.Image = global::projeto2023.Properties.Resources.menu_btnEstoque;
+            this.btn_estoque.Location = new System.Drawing.Point(697, 369);
+            this.btn_estoque.Name = "btn_estoque";
+            this.btn_estoque.Size = new System.Drawing.Size(210, 136);
+            this.btn_estoque.TabIndex = 19;
+            this.btn_estoque.Text = "ESTOQUE";
+            this.btn_estoque.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_estoque.UseVisualStyleBackColor = true;
+            this.btn_estoque.Click += new System.EventHandler(this.btn_estoque_Click);
             // 
-            // frm_movimentacoes
+            // movimentacoes
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(214)))), ((int)(((byte)(212)))));
             this.ClientSize = new System.Drawing.Size(1333, 692);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btn_Materiais);
-            this.Controls.Add(this.btn_Fornecedores);
-            this.Controls.Add(this.btn_Pedidos);
-            this.Controls.Add(this.btn_Clientes);
-            this.Controls.Add(this.btn_colabores);
             this.Controls.Add(this.pctb_cadastros);
             this.Controls.Add(this.pnl_movimentacoes);
             this.Font = new System.Drawing.Font("Lucida Sans", 12F);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(62)))), ((int)(((byte)(111)))));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
-            this.Name = "frm_movimentacoes";
+            this.Name = "movimentacoes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Movimentações Gerasi";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -176,12 +189,13 @@
         #endregion
         private System.Windows.Forms.Panel pnl_movimentacoes;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btn_Materiais;
-        private System.Windows.Forms.Button btn_Fornecedores;
-        private System.Windows.Forms.Button btn_Pedidos;
-        private System.Windows.Forms.Button btn_Clientes;
-        private System.Windows.Forms.Button btn_colabores;
+        private System.Windows.Forms.Button btn_Categorias;
+        private System.Windows.Forms.Button btn_Transacoes;
+        private System.Windows.Forms.Button btn_Fechamento;
+        private System.Windows.Forms.Button btn_SangriaCaixa;
+        private System.Windows.Forms.Button btn_contas;
         private System.Windows.Forms.PictureBox pctb_cadastros;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbl_voltar;
+        private System.Windows.Forms.Button btn_estoque;
     }
 }

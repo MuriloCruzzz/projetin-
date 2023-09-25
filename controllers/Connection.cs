@@ -20,7 +20,7 @@ namespace projeto2023.controllers
             try
             {
 
-                string stringConnection = @"Data Source=SUP-04;Initial Catalog=Estampariadb;Integrated Security=True;";
+                string stringConnection = @"Data Source=" + Environment.MachineName + @"\SQLEXPRESS;Initial Catalog=" + DataBase + ";Integrated Security = true";
                 con = new SqlConnection(stringConnection);
                 con.Open();
             }
