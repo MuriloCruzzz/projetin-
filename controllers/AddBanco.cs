@@ -828,17 +828,18 @@ namespace projeto2023.controllers
         public void GravarMovimentacao(Movimentacoes movimentacao)
         {
             Cmd.Connection = Con.RetornarConexao();
-            Cmd.CommandText = @"INSERT INTO  Movimentos VALUES (@codigo_Colaborador, @codigo_Cliente, @corCamiseta_Pedido, @tecidoCamiseta_Pedido, @formatoCamiseta_Pedido, @tipoGola_Pedido, @tecnicas_Pedido, @estampa_Pedido, @tamP_quant_Pedido, @tamM_quant_Pedido, @tamG_quant_Pedido, @diponibilizadoCliente, @quantdisponibilizadoCliente, @totalCamisetas_Pedido, @data_inicial, @data_entrega, @valorUnit_Pedido, @valorTotal_Pedido, @valorEntrada_Pedido, @valorAberto_Pedido, @formaPagamentoEntrada_Pedido, @formaPagamentoFinal_Pedido, @status_Pedido )";
+            Cmd.CommandText = @"INSERT INTO  Movimentos VALUES ( @Data, @Valor, @Descricao, @TipoTransacao, @CategoriaId, @ContaBancariaId, @CentroDeCustoId)";
 
             // definindo sql de insersão e atribuindo os parâmetros
 
-            //Cmd.Parameters.AddWithValue("@status_Pedido", movimentacao.ped_status);
-            //Cmd.Parameters.AddWithValue("@status_Pedido", movimentacao.ped_status);
-            //Cmd.Parameters.AddWithValue("@status_Pedido", movimentacao.ped_status);
-            //Cmd.Parameters.AddWithValue("@status_Pedido", movimentacao.ped_status);
-            //Cmd.Parameters.AddWithValue("@status_Pedido", movimentacao.ped_status);
-            //Cmd.Parameters.AddWithValue("@status_Pedido", movimentacao.ped_status);
-            //Cmd.Parameters.AddWithValue("@status_Pedido", movimentacao.ped_status);
+            //Cmd.Parameters.AddWithValue("@Id", movimentacao.ped_status);
+            //Cmd.Parameters.AddWithValue("@Data", movimentacao.ped_status);
+            //Cmd.Parameters.AddWithValue("@Valor", movimentacao.ped_status);
+            //Cmd.Parameters.AddWithValue("@Descricao", movimentacao.ped_status);
+            //Cmd.Parameters.AddWithValue("@TipoTransacao", movimentacao.ped_status);
+            //Cmd.Parameters.AddWithValue("@CategoriaId", movimentacao.ped_status);
+            //Cmd.Parameters.AddWithValue("@ContaBancariaId", movimentacao.ped_status);
+            //Cmd.Parameters.AddWithValue("@CentroDeCustoId", movimentacao.ped_status);
             try
             {
                 Cmd.ExecuteNonQuery();
@@ -854,7 +855,7 @@ namespace projeto2023.controllers
         public void UpdateMovimentacao(Movimentacoes movimentacao)
         {
             Cmd.Connection = Con.RetornarConexao();
-            Cmd.CommandText = @"UPDATE Movimentos SET  codigo_Colaborador = @colab_codigo, codigo_Cliente = @cli_codigo, corCamiseta_Pedido = @ped_cor, tecidoCamiseta_Pedido = @ped_tecido, formatoCamiseta_Pedido = @ped_formato, tipoGola_Pedido = @ped_gola, tecnicas_Pedido = @ped_tecnica, estampa_Pedido = @ped_estampa, tamP_quant_Pedido = @ped_tamP, tamM_quant_Pedido = @ped_tamM, tamG_quant_Pedido = @ped_tamG, diponibilizadoCliente = @ped_disponibilizadoCli, quantdisponibilizadoCliente = @ped_quantDisponibilizado, totalCamisetas_Pedido = @ped_totalCamisetas, data_inicial = @ped_Datainicial, data_entrega = @ped_DataEntrega, valorUnit_Pedido = @ped_valorUnitario, valorTotal_Pedido = @ped_valorTotal, valorEntrada_Pedido = @ped_valorEntrada, valorAberto_Pedido = @ped_valorAberto, formaPagamentoEntrada_Pedido = @ped_formaPagamentoEntrada, formaPagamentoFinal_Pedido = @ped_formaPagamentoFinal, status_Pedido = @ped_status WHERE codigo_Pedido = @ped_codigo";
+            Cmd.CommandText = @"UPDATE Movimentos SET  @Id = @colab_codigo, codigo_Cliente = @cli_codigo, corCamiseta_Pedido = @ped_cor, tecidoCamiseta_Pedido = @ped_tecido, formatoCamiseta_Pedido = @ped_formato, tipoGola_Pedido = @ped_gola, tecnicas_Pedido = @ped_tecnica, estampa_Pedido = @ped_estampa, tamP_quant_Pedido = @ped_tamP, tamM_quant_Pedido = @ped_tamM, tamG_quant_Pedido = @ped_tamG, diponibilizadoCliente = @ped_disponibilizadoCli, quantdisponibilizadoCliente = @ped_quantDisponibilizado, totalCamisetas_Pedido = @ped_totalCamisetas, data_inicial = @ped_Datainicial, data_entrega = @ped_DataEntrega, valorUnit_Pedido = @ped_valorUnitario, valorTotal_Pedido = @ped_valorTotal, valorEntrada_Pedido = @ped_valorEntrada, valorAberto_Pedido = @ped_valorAberto, formaPagamentoEntrada_Pedido = @ped_formaPagamentoEntrada, formaPagamentoFinal_Pedido = @ped_formaPagamentoFinal, status_Pedido = @ped_status WHERE codigo_Pedido = @ped_codigo";
 
         }
 
