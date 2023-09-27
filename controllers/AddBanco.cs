@@ -825,10 +825,10 @@ namespace projeto2023.controllers
 
 
         // método booleano para informar se obteve sucesso ao salvar as informações no banco de dado
-        public void GravarMovimentacao(Movimentacoes movimentacao)
+        public void InsertMovimentacao(Movimentacoes movimentacao)
         {
             Cmd.Connection = Con.RetornarConexao();
-            Cmd.CommandText = @"INSERT INTO  Movimentos VALUES ( @Data, @Valor, @Descricao, @TipoTransacao, @CategoriaId, @ContaBancariaId, @CentroDeCustoId)";
+            Cmd.CommandText = @"INSERT INTO  Movimentacoes VALUES ( @Data, @Valor, @Descricao, @TipoTransacao, @CategoriaId, @ContaBancariaId, @CentroDeCustoId)";
 
             // definindo sql de insersão e atribuindo os parâmetros
 
@@ -855,7 +855,7 @@ namespace projeto2023.controllers
         public void UpdateMovimentacao(Movimentacoes movimentacao)
         {
             Cmd.Connection = Con.RetornarConexao();
-            Cmd.CommandText = @"UPDATE Movimentos SET  @Id = @colab_codigo, codigo_Cliente = @cli_codigo, corCamiseta_Pedido = @ped_cor, tecidoCamiseta_Pedido = @ped_tecido, formatoCamiseta_Pedido = @ped_formato, tipoGola_Pedido = @ped_gola, tecnicas_Pedido = @ped_tecnica, estampa_Pedido = @ped_estampa, tamP_quant_Pedido = @ped_tamP, tamM_quant_Pedido = @ped_tamM, tamG_quant_Pedido = @ped_tamG, diponibilizadoCliente = @ped_disponibilizadoCli, quantdisponibilizadoCliente = @ped_quantDisponibilizado, totalCamisetas_Pedido = @ped_totalCamisetas, data_inicial = @ped_Datainicial, data_entrega = @ped_DataEntrega, valorUnit_Pedido = @ped_valorUnitario, valorTotal_Pedido = @ped_valorTotal, valorEntrada_Pedido = @ped_valorEntrada, valorAberto_Pedido = @ped_valorAberto, formaPagamentoEntrada_Pedido = @ped_formaPagamentoEntrada, formaPagamentoFinal_Pedido = @ped_formaPagamentoFinal, status_Pedido = @ped_status WHERE codigo_Pedido = @ped_codigo";
+            Cmd.CommandText = @"UPDATE Movimentacoes SET  @Id = @codigo_mov, Data = @data_movimentacao, Valor = @valor_movimentacao, Descricao = @descricao_movimentacao, TipoTransacao = @tipoTransacao_movimentacao, CategoriaId = @categoria_movimentacao, ContaBancariaId = @conta_movimentacao, CentroDeCustoId = @centroCusto_movimentacao WHERE status_Movimentacao = @status_movimentacao";
 
         }
 
@@ -863,8 +863,8 @@ namespace projeto2023.controllers
         public void DeleteMovimentacao(int movimentoCod)
         {
             Cmd.Connection = Con.RetornarConexao();
-            Cmd.CommandText = @"UPDATE Movimentos SET  status_Movimento = 0 WHERE codigo_Pedido = @ped_codigo";
-            Cmd.Parameters.AddWithValue("@ped_codigo", movimentoCod);
+            Cmd.CommandText = @"UPDATE Movimentacoes SET  status_Movimentacao = 0 WHERE Id = @codigo_mov";
+            Cmd.Parameters.AddWithValue("@status_movimentacao", movimentoCod);
             try
             {
                 Cmd.ExecuteNonQuery();
@@ -880,12 +880,12 @@ namespace projeto2023.controllers
         }
 
         // método para ler todo banco de dados e retornar as informações em uma lista
-        public List<Movimentos> ListarMovimentacoes()
+        public List<Movimentacoes> ListarMovimentacoes()
         {
             Cmd.Connection = Con.RetornarConexao();
-            Cmd.CommandText = "SELECT * FROM Movimentos where status_Movimento = 1";
+            Cmd.CommandText = "SELECT * FROM Movimentacoes where status_movimentacao = 1";
 
-            List<Movimentos> listaMovimentos = new List<Movimentos>();
+            List<Movimentacoes> listaMovimentos = new List<Movimentacoes>();
             try
             {
                 SqlDataReader rd = Cmd.ExecuteReader();
@@ -893,7 +893,7 @@ namespace projeto2023.controllers
                 while (rd.Read())
                 {
 
-                    Movimentos pedido = new Movimentos((int)rd["codigo_Pedido"], (int)rd["codigo_Colaborador"], (int)rd["codigo_Cliente"], (string)rd["corCamiseta_Pedido"], (string)rd["tecidoCamiseta_Pedido"], (string)rd["formatoCamiseta_Pedido"], (string)rd["tipoGola_Pedido"], (string)rd["tecnicas_Pedido"], (byte[])rd["estampa_Pedido"], (int)rd["tamP_quant_Pedido"], (int)rd["tamM_quant_Pedido"], (int)rd["tamG_quant_Pedido"], (int)rd["diponibilizadoCliente"], (int)rd["quantdisponibilizadoCliente"], (int)rd["totalCamisetas_Pedido"], (DateTime)rd["data_inicial"], (DateTime)rd["data_entrega"], (decimal)rd["valorUnit_Pedido"], (decimal)rd["valorTotal_Pedido"], (decimal)rd["valorEntrada_Pedido"], (decimal)rd["valorAberto_Pedido"], (string)rd["formaPagamentoEntrada_Pedido"], (string)rd["formaPagamentoFinal_Pedido"], (string)rd["status_Pedido"]);
+                    Movimentacoes pedido = new Movimentacoes((int)rd["Id"], (DateTime)rd["Data"], (decimal)rd["Valor"], (string)rd["Descricao"], (string)rd["TipoTransacao"], (int)rd["CategoriaId"], (int)rd["ContaBancariaId"], (int)rd["CentroDeCustoId"], (int)rd["status_movimentacao"]);
 
 
                     listaMovimentos.Add(pedido);

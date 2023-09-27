@@ -62,5 +62,10 @@ namespace projeto2023.views.frms
         {
             this.Close();
         }
+
+        private void btn_Fechamento_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

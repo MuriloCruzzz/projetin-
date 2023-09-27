@@ -30,15 +30,15 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(movimentacoes));
             this.pnl_movimentacoes = new System.Windows.Forms.Panel();
+            this.btn_estoque = new System.Windows.Forms.Button();
             this.lbl_voltar = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.btn_Categorias = new System.Windows.Forms.Button();
             this.btn_Transacoes = new System.Windows.Forms.Button();
+            this.btn_contas = new System.Windows.Forms.Button();
             this.btn_Fechamento = new System.Windows.Forms.Button();
             this.btn_SangriaCaixa = new System.Windows.Forms.Button();
-            this.btn_contas = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.pctb_cadastros = new System.Windows.Forms.PictureBox();
-            this.btn_estoque = new System.Windows.Forms.Button();
             this.pnl_movimentacoes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctb_cadastros)).BeginInit();
             this.SuspendLayout();
@@ -57,27 +57,28 @@
             this.pnl_movimentacoes.Size = new System.Drawing.Size(955, 623);
             this.pnl_movimentacoes.TabIndex = 4;
             // 
+            // btn_estoque
+            // 
+            this.btn_estoque.Image = global::projeto2023.Properties.Resources.menu_btnEstoque;
+            this.btn_estoque.Location = new System.Drawing.Point(697, 369);
+            this.btn_estoque.Name = "btn_estoque";
+            this.btn_estoque.Size = new System.Drawing.Size(210, 136);
+            this.btn_estoque.TabIndex = 19;
+            this.btn_estoque.Text = "ESTOQUE";
+            this.btn_estoque.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_estoque.UseVisualStyleBackColor = true;
+            this.btn_estoque.Click += new System.EventHandler(this.btn_estoque_Click);
+            // 
             // lbl_voltar
             // 
             this.lbl_voltar.AutoSize = true;
             this.lbl_voltar.Font = new System.Drawing.Font("Lucida Sans", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_voltar.Location = new System.Drawing.Point(3, 596);
             this.lbl_voltar.Name = "lbl_voltar";
-            this.lbl_voltar.Size = new System.Drawing.Size(89, 22);
+            this.lbl_voltar.Size = new System.Drawing.Size(90, 22);
             this.lbl_voltar.TabIndex = 14;
             this.lbl_voltar.Text = "VOLTAR";
             this.lbl_voltar.Click += new System.EventHandler(this.lbl_voltar_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.label1.Font = new System.Drawing.Font("Lucida Sans", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(327, 105);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(410, 55);
-            this.label1.TabIndex = 19;
-            this.label1.Text = "Movimentações";
             // 
             // btn_Categorias
             // 
@@ -103,6 +104,18 @@
             this.btn_Transacoes.UseVisualStyleBackColor = true;
             this.btn_Transacoes.Click += new System.EventHandler(this.btn_Transacoes_Click);
             // 
+            // btn_contas
+            // 
+            this.btn_contas.Image = global::projeto2023.Properties.Resources.menu_btnCliente;
+            this.btn_contas.Location = new System.Drawing.Point(70, 369);
+            this.btn_contas.Name = "btn_contas";
+            this.btn_contas.Size = new System.Drawing.Size(210, 136);
+            this.btn_contas.TabIndex = 14;
+            this.btn_contas.Text = "CONTAS";
+            this.btn_contas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_contas.UseVisualStyleBackColor = true;
+            this.btn_contas.Click += new System.EventHandler(this.btn_contas_Click);
+            // 
             // btn_Fechamento
             // 
             this.btn_Fechamento.Image = global::projeto2023.Properties.Resources.menu_btnListaProntos;
@@ -113,6 +126,7 @@
             this.btn_Fechamento.Text = "FECHAMENTO";
             this.btn_Fechamento.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_Fechamento.UseVisualStyleBackColor = true;
+            this.btn_Fechamento.Click += new System.EventHandler(this.btn_Fechamento_Click);
             // 
             // btn_SangriaCaixa
             // 
@@ -126,47 +140,34 @@
             this.btn_SangriaCaixa.UseVisualStyleBackColor = true;
             this.btn_SangriaCaixa.Click += new System.EventHandler(this.btn_SangriaCaixa_Click);
             // 
-            // btn_contas
+            // label1
             // 
-            this.btn_contas.Image = global::projeto2023.Properties.Resources.menu_btnCliente;
-            this.btn_contas.Location = new System.Drawing.Point(70, 369);
-            this.btn_contas.Name = "btn_contas";
-            this.btn_contas.Size = new System.Drawing.Size(210, 136);
-            this.btn_contas.TabIndex = 14;
-            this.btn_contas.Text = "CONTAS";
-            this.btn_contas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_contas.UseVisualStyleBackColor = true;
-            this.btn_contas.Click += new System.EventHandler(this.btn_contas_Click);
+            this.label1.AutoSize = true;
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.label1.Font = new System.Drawing.Font("Lucida Sans", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(327, 105);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(409, 56);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "Movimentações";
             // 
             // pctb_cadastros
             // 
             this.pctb_cadastros.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pctb_cadastros.Image = global::projeto2023.Properties.Resources.logo;
-            this.pctb_cadastros.Location = new System.Drawing.Point(1005, 279);
+            this.pctb_cadastros.Location = new System.Drawing.Point(1005, 288);
             this.pctb_cadastros.Name = "pctb_cadastros";
             this.pctb_cadastros.Size = new System.Drawing.Size(292, 309);
             this.pctb_cadastros.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pctb_cadastros.TabIndex = 13;
             this.pctb_cadastros.TabStop = false;
             // 
-            // btn_estoque
-            // 
-            this.btn_estoque.Image = global::projeto2023.Properties.Resources.menu_btnEstoque;
-            this.btn_estoque.Location = new System.Drawing.Point(697, 369);
-            this.btn_estoque.Name = "btn_estoque";
-            this.btn_estoque.Size = new System.Drawing.Size(210, 136);
-            this.btn_estoque.TabIndex = 19;
-            this.btn_estoque.Text = "ESTOQUE";
-            this.btn_estoque.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_estoque.UseVisualStyleBackColor = true;
-            this.btn_estoque.Click += new System.EventHandler(this.btn_estoque_Click);
-            // 
             // movimentacoes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(214)))), ((int)(((byte)(212)))));
-            this.ClientSize = new System.Drawing.Size(1333, 692);
+            this.ClientSize = new System.Drawing.Size(1333, 711);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pctb_cadastros);
             this.Controls.Add(this.pnl_movimentacoes);

@@ -342,3 +342,37 @@ C:\Users\Família Linda\Desktop\projetofinal\obj\Debug\projeto2023.csproj.CoreCo
 C:\Users\Família Linda\Desktop\projetofinal\obj\Debug\projeto2023.csproj.CopyComplete
 C:\Users\Família Linda\Desktop\projetofinal\obj\Debug\projeto2023.exe
 C:\Users\Família Linda\Desktop\projetofinal\obj\Debug\projeto2023.pdb
+C:\Users\CJ3005917\Desktop\projeto\obj\Debug\projeto2023.csproj.AssemblyReference.cache
+C:\Users\CJ3005917\Desktop\projeto\obj\Debug\projeto2023.csproj.SuggestedBindingRedirects.cache
+C:\Users\CJ3005917\Desktop\projeto\obj\Debug\projeto2023.menu.resources
+C:\Users\CJ3005917\Desktop\projeto\obj\Debug\projeto2023.Properties.Resources.resources
+C:\Users\CJ3005917\Desktop\projeto\obj\Debug\projeto2023.views.clientes.consulta_clientes.resources
+C:\Users\CJ3005917\Desktop\projeto\obj\Debug\projeto2023.views.clientes.crud_clientes.resources
+C:\Users\CJ3005917\Desktop\projeto\obj\Debug\projeto2023.views.clientes.relatorio_clientes.resources
+C:\Users\CJ3005917\Desktop\projeto\obj\Debug\projeto2023.views.colaboradores.consulta_colaboradores.resources
+C:\Users\CJ3005917\Desktop\projeto\obj\Debug\projeto2023.views.colaboradores.crud_colaboradores.resources
+C:\Users\CJ3005917\Desktop\projeto\obj\Debug\projeto2023.views.colaboradores.relatorio_colaboradores.resources
+C:\Users\CJ3005917\Desktop\projeto\obj\Debug\projeto2023.views.fornecedores.consulta_fornecedores.resources
+C:\Users\CJ3005917\Desktop\projeto\obj\Debug\projeto2023.views.fornecedores.crud_fornecedores.resources
+C:\Users\CJ3005917\Desktop\projeto\obj\Debug\projeto2023.views.fornecedores.relatorio_fornecedores.resources
+C:\Users\CJ3005917\Desktop\projeto\obj\Debug\projeto2023.views.frms.frm_cadastros.resources
+C:\Users\CJ3005917\Desktop\projeto\obj\Debug\projeto2023.views.frms.frm_consultas.resources
+C:\Users\CJ3005917\Desktop\projeto\obj\Debug\projeto2023.views.frms.Frm_logout.resources
+C:\Users\CJ3005917\Desktop\projeto\obj\Debug\projeto2023.views.frms.movimentacoes.resources
+C:\Users\CJ3005917\Desktop\projeto\obj\Debug\projeto2023.views.frms.frm_relatorios.resources
+C:\Users\CJ3005917\Desktop\projeto\obj\Debug\projeto2023.views.frms.login.resources
+C:\Users\CJ3005917\Desktop\projeto\obj\Debug\projeto2023.views.materiais.consulta_materiais.resources
+C:\Users\CJ3005917\Desktop\projeto\obj\Debug\projeto2023.views.materiais.crud_materiais.resources
+C:\Users\CJ3005917\Desktop\projeto\obj\Debug\projeto2023.views.materiais.relatorio_materiais.resources
+C:\Users\CJ3005917\Desktop\projeto\obj\Debug\projeto2023.views.movimentacoes.contas.crud_conta.resources
+C:\Users\CJ3005917\Desktop\projeto\obj\Debug\projeto2023.views.movimentacoes.crud_movimentacoes.resources
+C:\Users\CJ3005917\Desktop\projeto\obj\Debug\projeto2023.views.pedidos.consulta_pedidos.resources
+C:\Users\CJ3005917\Desktop\projeto\obj\Debug\projeto2023.views.pedidos.crud_pedidos.resources
+C:\Users\CJ3005917\Desktop\projeto\obj\Debug\projeto2023.views.pedidos.relatorio_pedidos.resources
+C:\Users\CJ3005917\Desktop\projeto\obj\Debug\projeto2023.views.producao.consulta_produção.resources
+C:\Users\CJ3005917\Desktop\projeto\obj\Debug\projeto2023.views.producao.crud_producao.resources
+C:\Users\CJ3005917\Desktop\projeto\obj\Debug\projeto2023.csproj.GenerateResource.cache
+C:\Users\CJ3005917\Desktop\projeto\obj\Debug\projeto2023.csproj.CoreCompileInputs.cache
+C:\Users\CJ3005917\Desktop\projeto\obj\Debug\projeto2023.exe
+C:\Users\CJ3005917\Desktop\projeto\obj\Debug\projeto2023.pdb
+C:\Users\CJ3005917\Desktop\projeto\obj\Debug\projeto2023.views.movimentacoes.consulta_movimentacoes.resources
