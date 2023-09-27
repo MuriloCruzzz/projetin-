@@ -34,7 +34,7 @@ namespace projeto2023
 
         private void btn_movimentacoes_Click(object sender, EventArgs e)
         {
-            frm_movimentacoes frm = new frm_movimentacoes();
+            movimentacoes frm = new movimentacoes();
             frm.ShowDialog();
         }
 

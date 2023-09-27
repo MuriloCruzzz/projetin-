@@ -72,10 +72,5 @@ namespace projeto2023.views.materiais
             }
             return dt;
         }
-
-        private void label_voltar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
     }
 }

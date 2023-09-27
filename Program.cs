@@ -8,7 +8,6 @@ using projeto2023.views.clientes;
 using projeto2023.views.colaboradores;
 using projeto2023.views.fornecedores;
 using projeto2023.views.frms;
-using projeto2023.views.materiais;
 using projeto2023.views.producao;
 
 namespace projeto2023
@@ -23,7 +22,7 @@ namespace projeto2023
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new menu());
+            Application.Run(new login());
             //Application.Run(new frm_cadastros());
         }
     }

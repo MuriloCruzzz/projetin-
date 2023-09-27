@@ -1,4 +1,10 @@
-﻿using System;
+﻿using projeto2023.views.fornecedores;
+using projeto2023.views.movimentacoes;
+using projeto2023.views.movimentacoes.categorias;
+using projeto2023.views.movimentacoes.contas;
+using projeto2023.views.movimentacoes.estoque;
+using projeto2023.views.movimentacoes.sangria;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,41 +16,56 @@ using System.Windows.Forms;
 
 namespace projeto2023.views.frms
 {
-    public partial class frm_movimentacoes : Form
+    public partial class movimentacoes : Form
     {
-        public frm_movimentacoes()
+        public movimentacoes()
         {
             InitializeComponent();
-        }
-
-        private void btn_colabores_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btn_Fornecedores_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btn_Materiais_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btn_Clientes_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btn_Pedidos_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void label2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btn_contas_Click(object sender, EventArgs e)
+        {
+            crud_conta frm = new crud_conta();
+            frm.ShowDialog();
+        }
+
+        private void btn_Transacoes_Click(object sender, EventArgs e)
+        {
+            crud_movimentacoes frm = new crud_movimentacoes();
+            frm.ShowDialog();
+        }
+
+        private void btn_Categorias_Click(object sender, EventArgs e)
+        {
+            crud_categoria frm = new crud_categoria();
+            frm.ShowDialog();
+        }
+
+        private void btn_SangriaCaixa_Click(object sender, EventArgs e)
+        {
+            crud_sangria frm = new crud_sangria();
+            frm.ShowDialog();
+        }
+
+        private void btn_estoque_Click(object sender, EventArgs e)
+        {
+            crud_estoque frm = new crud_estoque();
+            frm.ShowDialog():
+        }
+
+        private void lbl_voltar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btn_Fechamento_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

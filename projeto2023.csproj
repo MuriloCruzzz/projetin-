@@ -65,7 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="controllers\AddBanco.cs" />
-    <Compile Include="controllers\AddBanco_pedidos.cs" />
+    <Compile Include="controllers\Classificacao.cs" />
     <Compile Include="controllers\Connection.cs" />
     <Compile Include="controllers\Security.cs" />
     <Compile Include="controllers\Validation.cs" />
@@ -105,17 +105,26 @@
     <Compile Include="menu.Designer.cs">
       <DependentUpon>menu.cs</DependentUpon>
     </Compile>
+    <Compile Include="models\Categoria.cs" />
+    <Compile Include="models\Centro_Custo.cs" />
     <Compile Include="models\Clientes.cs" />
     <Compile Include="models\Clientes_dados.cs" />
     <Compile Include="models\Colaboradores.cs" />
     <Compile Include="models\Colaboradores_dados.cs" />
+    <Compile Include="models\Contas.cs" />
+    <Compile Include="models\Despesas.cs" />
     <Compile Include="models\Estoque.cs" />
+    <Compile Include="models\FechamentoCaixa.cs" />
     <Compile Include="models\Fornecedores _dados.cs" />
     <Compile Include="models\Fornecedores.cs" />
     <Compile Include="models\Materiais.cs" />
+    <Compile Include="models\Movimentacoes.cs" />
     <Compile Include="models\Pedidos.cs" />
     <Compile Include="models\ListarUsuarios.cs" />
     <Compile Include="models\Producao.cs" />
+    <Compile Include="models\Receita.cs" />
+    <Compile Include="models\SangriaCaixa.cs" />
+    <Compile Include="models\Transacao.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -232,6 +241,42 @@
     <Compile Include="views\materiais\relatorio_materiais.Designer.cs">
       <DependentUpon>relatorio_materiais.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\movimentacoes\categorias\crud_categoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\movimentacoes\categorias\crud_categoria.Designer.cs">
+      <DependentUpon>crud_categoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\movimentacoes\consulta_movimentacoes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\movimentacoes\consulta_movimentacoes.Designer.cs">
+      <DependentUpon>consulta_movimentacoes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\movimentacoes\contas\crud_conta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\movimentacoes\contas\crud_conta.Designer.cs">
+      <DependentUpon>crud_conta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\movimentacoes\crud_movimentacoes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\movimentacoes\crud_movimentacoes.Designer.cs">
+      <DependentUpon>crud_movimentacoes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\movimentacoes\estoque\crud_estoque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\movimentacoes\estoque\crud_estoque.Designer.cs">
+      <DependentUpon>crud_estoque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\movimentacoes\sangria\crud_sangria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\movimentacoes\sangria\crud_sangria.Designer.cs">
+      <DependentUpon>crud_sangria.cs</DependentUpon>
+    </Compile>
     <Compile Include="views\pedidos\consulta_pedidos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -262,20 +307,6 @@
     <Compile Include="views\producao\crud_producao.Designer.cs">
       <DependentUpon>crud_producao.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\producao\DadosProducao.cs" />
-    <Compile Include="views\producao\Producao_Andamento.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="views\producao\Producao_Andamento.Designer.cs">
-      <DependentUpon>Producao_Andamento.cs</DependentUpon>
-    </Compile>
-    <Compile Include="views\producao\ListarProducoes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="views\producao\ListarProducoes.Designer.cs">
-      <DependentUpon>ListarProducoes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="views\producao\WebControl.cs" />
     <EmbeddedResource Include="menu.resx">
       <DependentUpon>menu.cs</DependentUpon>
     </EmbeddedResource>
@@ -321,7 +352,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="views\frms\frm_consultas.resx">
       <DependentUpon>frm_consultas.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="views\frms\Frm_logout.resx">
       <DependentUpon>Frm_logout.cs</DependentUpon>
@@ -344,9 +374,17 @@
     <EmbeddedResource Include="views\materiais\relatorio_materiais.resx">
       <DependentUpon>relatorio_materiais.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="views\movimentacoes\consulta_movimentacoes.resx">
+      <DependentUpon>consulta_movimentacoes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\movimentacoes\contas\crud_conta.resx">
+      <DependentUpon>crud_conta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\movimentacoes\crud_movimentacoes.resx">
+      <DependentUpon>crud_movimentacoes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="views\pedidos\consulta_pedidos.resx">
       <DependentUpon>consulta_pedidos.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="views\pedidos\crud_pedidos.resx">
       <DependentUpon>crud_pedidos.cs</DependentUpon>
@@ -359,13 +397,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="views\producao\crud_producao.resx">
       <DependentUpon>crud_producao.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="views\producao\ListarProducoes.resx">
-      <DependentUpon>ListarProducoes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="views\producao\Producao_Andamento.resx">
-      <DependentUpon>Producao_Andamento.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="EstampariadbDataSet1.xsc">
       <DependentUpon>EstampariadbDataSet1.xsd</DependentUpon>
@@ -448,9 +479,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="views\estoque\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="img\menu_fundo.png" />
   </ItemGroup>

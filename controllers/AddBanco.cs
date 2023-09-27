@@ -9,8 +9,6 @@ using System.Data.SqlTypes;
 using projeto2023.models;
 using System.Windows.Forms;
 using System.Globalization;
-using projeto2023.views.colaboradores;
-using projeto2023.views.producao;
 
 namespace projeto2023.controllers
 {
@@ -655,7 +653,7 @@ namespace projeto2023.controllers
         public void InsertPedidos(Pedidos pedido)
         {
             Cmd.Connection = Con.RetornarConexao();
-            Cmd.CommandText = @"INSERT INTO  Pedidos VALUES (@codigo_Colaborador, @codigo_Cliente, @corCamiseta_Pedido, @tecidoCamiseta_Pedido, @formatoCamiseta_Pedido, @tipoGola_Pedido, @tecnicas_Pedido, @tamP_quant_Pedido, @tamM_quant_Pedido, @tamG_quant_Pedido, @diponibilizadoCliente, @quantdisponibilizadoCliente, @totalCamisetas_Pedido, @data_inicial, @data_entrega, @valorUnit_Pedido, @valorTotal_Pedido, @valorEntrada_Pedido, @valorAberto_Pedido, @formaPagamentoEntrada_Pedido, @formaPagamentoFinal_Pedido, @status_Pedido, @estampa_Pedido)";
+            Cmd.CommandText = @"INSERT INTO  Pedidos VALUES (@codigo_Colaborador, @codigo_Cliente, @corCamiseta_Pedido, @tecidoCamiseta_Pedido, @formatoCamiseta_Pedido, @tipoGola_Pedido, @tecnicas_Pedido, @estampa_Pedido, @tamP_quant_Pedido, @tamM_quant_Pedido, @tamG_quant_Pedido, @diponibilizadoCliente, @quantdisponibilizadoCliente, @totalCamisetas_Pedido, @data_inicial, @data_entrega, @valorUnit_Pedido, @valorTotal_Pedido, @valorEntrada_Pedido, @valorAberto_Pedido, @formaPagamentoEntrada_Pedido, @formaPagamentoFinal_Pedido, @status_Pedido )";
 
 
             Cmd.Parameters.AddWithValue("@codigo_Colaborador", pedido.colab_codigo);
@@ -665,6 +663,7 @@ namespace projeto2023.controllers
             Cmd.Parameters.AddWithValue("@formatoCamiseta_Pedido", pedido.ped_formato);
             Cmd.Parameters.AddWithValue("@tipoGola_Pedido", pedido.ped_gola);
             Cmd.Parameters.AddWithValue("@tecnicas_Pedido", pedido.ped_tecnica);
+            Cmd.Parameters.AddWithValue("@estampa_Pedido", pedido.ped_estampa);
             Cmd.Parameters.AddWithValue("@tamP_quant_Pedido", pedido.ped_tamP);
             Cmd.Parameters.AddWithValue("@tamM_quant_Pedido", pedido.ped_tamM);
             Cmd.Parameters.AddWithValue("@tamG_quant_Pedido", pedido.ped_tamG);
@@ -680,7 +679,6 @@ namespace projeto2023.controllers
             Cmd.Parameters.AddWithValue("@formaPagamentoEntrada_Pedido", pedido.ped_formaPagamentoEntrada);
             Cmd.Parameters.AddWithValue("@formaPagamentoFinal_Pedido", pedido.ped_formaPagamentoFinal);
             Cmd.Parameters.AddWithValue("@status_Pedido", pedido.ped_status);
-            Cmd.Parameters.AddWithValue("@estampa_Pedido", pedido.ped_estampa);
 
 
             try
@@ -710,7 +708,7 @@ namespace projeto2023.controllers
                 while (rd.Read())
                 {
 
-                    Pedidos pedido = new Pedidos((int)rd["codigo_Pedido"], (int)rd["codigo_Colaborador"], (int)rd["codigo_Cliente"], (string)rd["corCamiseta_Pedido"], (string)rd["tecidoCamiseta_Pedido"], (string)rd["formatoCamiseta_Pedido"], (string)rd["tipoGola_Pedido"], (string)rd["tecnicas_Pedido"], (string)rd["estampa_Pedido"], (int)rd["tamP_quant_Pedido"], (int)rd["tamM_quant_Pedido"], (int)rd["tamG_quant_Pedido"], (int)rd["diponibilizadoCliente"], (int)rd["quantdisponibilizadoCliente"], (int)rd["totalCamisetas_Pedido"], (DateTime)rd["data_inicial"], (DateTime)rd["data_entrega"], (decimal)rd["valorUnit_Pedido"], (decimal)rd["valorTotal_Pedido"], (decimal)rd["valorEntrada_Pedido"], (decimal)rd["valorAberto_Pedido"], (string)rd["formaPagamentoEntrada_Pedido"], (string)rd["formaPagamentoFinal_Pedido"], (string)rd["status_Pedido"]);
+                    Pedidos pedido = new Pedidos((int)rd["codigo_Pedido"], (int)rd["codigo_Colaborador"], (int)rd["codigo_Cliente"], (string)rd["corCamiseta_Pedido"], (string)rd["tecidoCamiseta_Pedido"], (string)rd["formatoCamiseta_Pedido"], (string)rd["tipoGola_Pedido"], (string)rd["tecnicas_Pedido"], (byte[])rd["estampa_Pedido"], (int)rd["tamP_quant_Pedido"], (int)rd["tamM_quant_Pedido"], (int)rd["tamG_quant_Pedido"], (int)rd["diponibilizadoCliente"], (int)rd["quantdisponibilizadoCliente"], (int)rd["totalCamisetas_Pedido"], (DateTime)rd["data_inicial"], (DateTime)rd["data_entrega"], (decimal)rd["valorUnit_Pedido"], (decimal)rd["valorTotal_Pedido"], (decimal)rd["valorEntrada_Pedido"], (decimal)rd["valorAberto_Pedido"], (string)rd["formaPagamentoEntrada_Pedido"], (string)rd["formaPagamentoFinal_Pedido"], (string)rd["status_Pedido"]);
 
 
                     listaPedidos.Add(pedido);
@@ -738,8 +736,6 @@ namespace projeto2023.controllers
             Cmd.Connection = Con.RetornarConexao();
             Cmd.CommandText = @"UPDATE Pedidos SET  codigo_Colaborador = @colab_codigo, codigo_Cliente = @cli_codigo, corCamiseta_Pedido = @ped_cor, tecidoCamiseta_Pedido = @ped_tecido, formatoCamiseta_Pedido = @ped_formato, tipoGola_Pedido = @ped_gola, tecnicas_Pedido = @ped_tecnica, estampa_Pedido = @ped_estampa, tamP_quant_Pedido = @ped_tamP, tamM_quant_Pedido = @ped_tamM, tamG_quant_Pedido = @ped_tamG, diponibilizadoCliente = @ped_disponibilizadoCli, quantdisponibilizadoCliente = @ped_quantDisponibilizado, totalCamisetas_Pedido = @ped_totalCamisetas, data_inicial = @ped_Datainicial, data_entrega = @ped_DataEntrega, valorUnit_Pedido = @ped_valorUnitario, valorTotal_Pedido = @ped_valorTotal, valorEntrada_Pedido = @ped_valorEntrada, valorAberto_Pedido = @ped_valorAberto, formaPagamentoEntrada_Pedido = @ped_formaPagamentoEntrada, formaPagamentoFinal_Pedido = @ped_formaPagamentoFinal, status_Pedido = @ped_status WHERE codigo_Pedido = @ped_codigo";
 
-
-
             Cmd.Parameters.AddWithValue("@ped_codigo", pedToBeUpdated.ped_codigo);
             Cmd.Parameters.AddWithValue("@colab_codigo", pedToBeUpdated.colab_codigo);
             Cmd.Parameters.AddWithValue("@cli_codigo", pedToBeUpdated.cli_codigo);
@@ -764,12 +760,6 @@ namespace projeto2023.controllers
             Cmd.Parameters.AddWithValue("@ped_formaPagamentoEntrada", pedToBeUpdated.ped_formaPagamentoEntrada);
             Cmd.Parameters.AddWithValue("@ped_formaPagamentoFinal", pedToBeUpdated.ped_formaPagamentoFinal);
             Cmd.Parameters.AddWithValue("@ped_status", pedToBeUpdated.ped_status);
-
-
-
-
-
-
 
             try
             {
@@ -824,41 +814,208 @@ namespace projeto2023.controllers
             return image;
         }
 
-
-
         #endregion
 
 
         #region PRODUÇÃO
 
         #endregion
-        //INSERIR DADOS COLABORADOR
-        public void InsertProducao(Producao producao)
+
+        #region MOVIMENTAÇÕES
+
+
+        // método booleano para informar se obteve sucesso ao salvar as informações no banco de dado
+        public void InsertMovimentacao(Movimentacoes movimentacao)
         {
             Cmd.Connection = Con.RetornarConexao();
-            Cmd.CommandText = @"INSERT INTO PRODUCOES (ID_produto, Quantidade_P, Quantidade_M, Quantidade_G, COR, Tecido, Formato, Tipo_Gola, Tecnicas, Data_Entrega, Status) VALUES (@codigo_produto, @quantidade_P, @quantidade_M, @quantidade_G, @cor, @tecido, @formato, @gola, @tecnicas, @Data_Entrega, @status)";
-            Cmd.Parameters.AddWithValue("@codigo_produto", producao.codigo_produto);
-            Cmd.Parameters.AddWithValue("@quantidade_P", producao.quantidade_P);
-            Cmd.Parameters.AddWithValue("@quantidade_M", producao.quantidade_M);
-            Cmd.Parameters.AddWithValue("@quantidade_G", producao.quantidade_G );
-            Cmd.Parameters.AddWithValue("@cor", producao.cor);
-            Cmd.Parameters.AddWithValue("@tecido", producao.tecido);
-            Cmd.Parameters.AddWithValue("@formato", producao.formato);
-            Cmd.Parameters.AddWithValue("@gola", producao.gola);
-            Cmd.Parameters.AddWithValue("@tecnicas", producao.tecnicas);
-            Cmd.Parameters.AddWithValue("@Data_Entrega", producao.Data_Entrega);
-            Cmd.Parameters.AddWithValue("@status", producao.status);
+            Cmd.CommandText = @"INSERT INTO  Movimentacoes VALUES ( @Data, @Valor, @Descricao, @TipoTransacao, @CategoriaId, @ContaBancariaId, @CentroDeCustoId)";
 
+            // definindo sql de insersão e atribuindo os parâmetros
+
+            //Cmd.Parameters.AddWithValue("@Id", movimentacao.ped_status);
+            //Cmd.Parameters.AddWithValue("@Data", movimentacao.ped_status);
+            //Cmd.Parameters.AddWithValue("@Valor", movimentacao.ped_status);
+            //Cmd.Parameters.AddWithValue("@Descricao", movimentacao.ped_status);
+            //Cmd.Parameters.AddWithValue("@TipoTransacao", movimentacao.ped_status);
+            //Cmd.Parameters.AddWithValue("@CategoriaId", movimentacao.ped_status);
+            //Cmd.Parameters.AddWithValue("@ContaBancariaId", movimentacao.ped_status);
+            //Cmd.Parameters.AddWithValue("@CentroDeCustoId", movimentacao.ped_status);
             try
             {
                 Cmd.ExecuteNonQuery();
                 Con.FecharConexao();
-
             }
             catch (Exception erro)
             {
-                throw new Exception("Erro problemas ao inserir o colaborador ao banco de dados. \n" + erro.Message);
+                throw new Exception("Erro problemas ao inserir a movimentação ao banco de dados. \n" + erro.Message);
             }
         }
+
+        // Método de alteração, necessário informar todos os parâmetros, considerando que não se sabe qual será alterado
+        public void UpdateMovimentacao(Movimentacoes movimentacao)
+        {
+            Cmd.Connection = Con.RetornarConexao();
+            Cmd.CommandText = @"UPDATE Movimentacoes SET  @Id = @codigo_mov, Data = @data_movimentacao, Valor = @valor_movimentacao, Descricao = @descricao_movimentacao, TipoTransacao = @tipoTransacao_movimentacao, CategoriaId = @categoria_movimentacao, ContaBancariaId = @conta_movimentacao, CentroDeCustoId = @centroCusto_movimentacao WHERE status_Movimentacao = @status_movimentacao";
+
+        }
+
+        // Método para excluir a movimentação financeira
+        public void DeleteMovimentacao(int movimentoCod)
+        {
+            Cmd.Connection = Con.RetornarConexao();
+            Cmd.CommandText = @"UPDATE Movimentacoes SET  status_Movimentacao = 0 WHERE Id = @codigo_mov";
+            Cmd.Parameters.AddWithValue("@status_movimentacao", movimentoCod);
+            try
+            {
+                Cmd.ExecuteNonQuery();
+            }
+            catch (Exception erro)
+            {
+                throw new Exception("Erro problemas excluir movimento do banco de dados. \n" + erro.Message);
+            }
+            finally
+            {
+                Con.FecharConexao();
+            }
+        }
+
+        // método para ler todo banco de dados e retornar as informações em uma lista
+        public List<Movimentacoes> ListarMovimentacoes()
+        {
+            Cmd.Connection = Con.RetornarConexao();
+            Cmd.CommandText = "SELECT * FROM Movimentacoes where status_movimentacao = 1";
+
+            List<Movimentacoes> listaMovimentos = new List<Movimentacoes>();
+            try
+            {
+                SqlDataReader rd = Cmd.ExecuteReader();
+
+                while (rd.Read())
+                {
+
+                    Movimentacoes pedido = new Movimentacoes((int)rd["Id"], (DateTime)rd["Data"], (decimal)rd["Valor"], (string)rd["Descricao"], (string)rd["TipoTransacao"], (int)rd["CategoriaId"], (int)rd["ContaBancariaId"], (int)rd["CentroDeCustoId"], (int)rd["status_movimentacao"]);
+
+
+                    listaMovimentos.Add(pedido);
+                }
+                rd.Close();
+            }
+            catch (Exception erro)
+            {
+
+                throw new Exception("Erro: problema ao realizar leitura do banco.\n" + erro.Message);
+            }
+            finally
+            {
+                Con.FecharConexao();
+            }
+
+            return listaMovimentos;
+        }
+
+
+
+        #endregion
+
+
+        #region CLASSIFICACOES
+
+        // método booleano para informar se obteve sucesso ao salvar as informações no banco de dado
+        public void GravarClasse(Classificacao classificacao)
+        {
+            Cmd.Connection = Con.RetornarConexao();
+            Cmd.CommandText = @"INSERT INTO  Classificacao VALUES (@codigo_Colaborador, @codigo_Cliente, @corCamiseta_Pedido, @tecidoCamiseta_Pedido, @formatoCamiseta_Pedido, @tipoGola_Pedido, @tecnicas_Pedido, @estampa_Pedido, @tamP_quant_Pedido, @tamM_quant_Pedido, @tamG_quant_Pedido, @diponibilizadoCliente, @quantdisponibilizadoCliente, @totalCamisetas_Pedido, @data_inicial, @data_entrega, @valorUnit_Pedido, @valorTotal_Pedido, @valorEntrada_Pedido, @valorAberto_Pedido, @formaPagamentoEntrada_Pedido, @formaPagamentoFinal_Pedido, @status_Pedido )";
+
+            // definindo sql de insersão e atribuindo os parâmetros
+
+            //Cmd.Parameters.AddWithValue("@status_Pedido", movimentacao.ped_status);
+            //Cmd.Parameters.AddWithValue("@status_Pedido", movimentacao.ped_status);
+            //Cmd.Parameters.AddWithValue("@status_Pedido", movimentacao.ped_status);
+            //Cmd.Parameters.AddWithValue("@status_Pedido", movimentacao.ped_status);
+            //Cmd.Parameters.AddWithValue("@status_Pedido", movimentacao.ped_status);
+            //Cmd.Parameters.AddWithValue("@status_Pedido", movimentacao.ped_status);
+            //Cmd.Parameters.AddWithValue("@status_Pedido", movimentacao.ped_status);
+            try
+            {
+                Cmd.ExecuteNonQuery();
+                Con.FecharConexao();
+            }
+            catch (Exception erro)
+            {
+                throw new Exception("Erro problemas ao inserir a classe ao banco de dados. \n" + erro.Message);
+            }
+        }
+
+        // Método de alteração, necessário informar todos os parâmetros, considerando que não se sabe qual será alterado
+        public void UpdateClasse(Classificacao classificacao)
+        {
+            Cmd.Connection = Con.RetornarConexao();
+            Cmd.CommandText = @"UPDATE Classificao SET  codigo_Colaborador = @colab_codigo, codigo_Cliente = @cli_codigo, corCamiseta_Pedido = @ped_cor, tecidoCamiseta_Pedido = @ped_tecido, formatoCamiseta_Pedido = @ped_formato, tipoGola_Pedido = @ped_gola, tecnicas_Pedido = @ped_tecnica, estampa_Pedido = @ped_estampa, tamP_quant_Pedido = @ped_tamP, tamM_quant_Pedido = @ped_tamM, tamG_quant_Pedido = @ped_tamG, diponibilizadoCliente = @ped_disponibilizadoCli, quantdisponibilizadoCliente = @ped_quantDisponibilizado, totalCamisetas_Pedido = @ped_totalCamisetas, data_inicial = @ped_Datainicial, data_entrega = @ped_DataEntrega, valorUnit_Pedido = @ped_valorUnitario, valorTotal_Pedido = @ped_valorTotal, valorEntrada_Pedido = @ped_valorEntrada, valorAberto_Pedido = @ped_valorAberto, formaPagamentoEntrada_Pedido = @ped_formaPagamentoEntrada, formaPagamentoFinal_Pedido = @ped_formaPagamentoFinal, status_Pedido = @ped_status WHERE codigo_Pedido = @ped_codigo";
+
+        }
+
+        // Método para excluir a movimentação financeira
+        public void DeleteClasse(int classificacaoCod)
+        {
+            Cmd.Connection = Con.RetornarConexao();
+            Cmd.CommandText = @"UPDATE Classificacao SET  status_Classe = 0 WHERE codigo_Pedido = @ped_codigo";
+            Cmd.Parameters.AddWithValue("@ped_codigo", classificacaoCod);
+            try
+            {
+                Cmd.ExecuteNonQuery();
+            }
+            catch (Exception erro)
+            {
+                throw new Exception("Erro problemas excluir classificacao do banco de dados. \n" + erro.Message);
+            }
+            finally
+            {
+                Con.FecharConexao();
+            }
+        }
+
+        // método para ler todo banco de dados e retornar as informações em uma lista
+        public List<Movimentos> ListarClasses()
+        {
+            Cmd.Connection = Con.RetornarConexao();
+            Cmd.CommandText = "SELECT * FROM Classificacao where status_Classe = 1";
+
+            List<Classificacao> listaMovimentos = new List<Classificacao>();
+            try
+            {
+                SqlDataReader rd = Cmd.ExecuteReader();
+
+                while (rd.Read())
+                {
+
+                    Classificacao classificacao = new Classificacao((int)rd["codigo_Pedido"], (int)rd["codigo_Colaborador"], (int)rd["codigo_Cliente"], (string)rd["corCamiseta_Pedido"], (string)rd["tecidoCamiseta_Pedido"], (string)rd["formatoCamiseta_Pedido"], (string)rd["tipoGola_Pedido"], (string)rd["tecnicas_Pedido"], (byte[])rd["estampa_Pedido"], (int)rd["tamP_quant_Pedido"], (int)rd["tamM_quant_Pedido"], (int)rd["tamG_quant_Pedido"], (int)rd["diponibilizadoCliente"], (int)rd["quantdisponibilizadoCliente"], (int)rd["totalCamisetas_Pedido"], (DateTime)rd["data_inicial"], (DateTime)rd["data_entrega"], (decimal)rd["valorUnit_Pedido"], (decimal)rd["valorTotal_Pedido"], (decimal)rd["valorEntrada_Pedido"], (decimal)rd["valorAberto_Pedido"], (string)rd["formaPagamentoEntrada_Pedido"], (string)rd["formaPagamentoFinal_Pedido"], (string)rd["status_Pedido"]);
+
+
+                    listaMovimentos.Add(classificacao);
+                }
+                rd.Close();
+            }
+            catch (Exception erro)
+            {
+
+                throw new Exception("Erro: problema ao realizar leitura do banco.\n" + erro.Message);
+            }
+            finally
+            {
+                Con.FecharConexao();
+            }
+
+            return listaMovimentos;
+        }
+
+
+        #endregion
+
+
+        #region CONTA
+
+
+
+        #endregion
     }
 }
