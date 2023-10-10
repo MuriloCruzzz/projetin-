@@ -984,7 +984,7 @@ namespace projeto2023.controllers
                 while (rd.Read())
                 {
 
-                    Categoria categoria = new Categoria((int)rd["codigo_Pedido"], (int)rd["codigo_Colaborador"], (int)rd["codigo_Cliente"], (string)rd["corCamiseta_Pedido"], (string)rd["tecidoCamiseta_Pedido"], (string)rd["formatoCamiseta_Pedido"], (string)rd["tipoGola_Pedido"], (string)rd["tecnicas_Pedido"], (byte[])rd["estampa_Pedido"], (int)rd["tamP_quant_Pedido"], (int)rd["tamM_quant_Pedido"], (int)rd["tamG_quant_Pedido"], (int)rd["diponibilizadoCliente"], (int)rd["quantdisponibilizadoCliente"], (int)rd["totalCamisetas_Pedido"], (DateTime)rd["data_inicial"], (DateTime)rd["data_entrega"], (decimal)rd["valorUnit_Pedido"], (decimal)rd["valorTotal_Pedido"], (decimal)rd["valorEntrada_Pedido"], (decimal)rd["valorAberto_Pedido"], (string)rd["formaPagamentoEntrada_Pedido"], (string)rd["formaPagamentoFinal_Pedido"], (string)rd["status_Pedido"]);
+                    Categoria categoria = new Categoria((int)rd["codigo_Categoria"], (string)rd["Nome"], (string)rd["Descricao"], (int)rd["status_cate"]);
 
 
                     listaCategorias.Add(categoria);
@@ -1001,7 +1001,7 @@ namespace projeto2023.controllers
                 Con.FecharConexao();
             }
 
-            return listaMovimentos;
+            return listaCategorias;
         }
 
 
