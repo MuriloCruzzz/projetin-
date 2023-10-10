@@ -8,15 +8,37 @@ namespace projeto2023.models
 {
     class Receita
     {
-        public int Id { get; set; }
-        public DateTime Data { get; set; }
-        public decimal Valor { get; set; }
-        public int CategoriaId { get; set; }
-        public Categoria Categoria { get; set; }
-        public int ContaBancariaId { get; set; }
-        public Contas ContaBancaria { get; set; }
-        public int CentroDeCustoId { get; set; } // Adicionado campo CentroDeCustoId
-        public Centro_Custo CentroDeCusto { get; set; } // Adicionado relacionamento com CentroDeCusto
-        public string Descricao { get; set; }
+        public int Id_receita { get; set; }
+        public DateTime Data_receita { get; set; }
+        public decimal Valor_receita { get; set; }
+        public int CategoriaId_receita { get; set; }
+        public Categoria Categoria_receita { get; set; }
+        public int ContaBancariaId_receita { get; set; }
+        public Contas ContaBancaria_receita { get; set; }
+        public int CentroDeCustoId_receita { get; set; } // Adicionado campo CentroDeCustoId
+        public Centro_Custo CentroDeCusto_receita { get; set; } // Adicionado relacionamento com CentroDeCusto
+        public string Descricao_receita { get; set; }
+
+
+
+        public Receita(int id, DateTime data, decimal valor, int categoriaID, int cbancariaID,  int ccustoID, string desc)
+        {
+            Id_receita = id;
+            Data_receita = data;
+            Valor_receita =  valor;
+            CategoriaId_receita = categoriaID;
+            ContaBancariaId_receita = cbancariaID;
+            CentroDeCustoId_receita = ccustoID;
+            Descricao_receita = desc;   
+        }
+        public Receita( DateTime data, decimal valor, int categoriaID, int cbancariaID, int ccustoID, string desc)
+        {
+            Data_receita = data;
+            Valor_receita = valor;
+            CategoriaId_receita = categoriaID;
+            ContaBancariaId_receita = cbancariaID;
+            CentroDeCustoId_receita = ccustoID;
+            Descricao_receita = desc;
+        }
     }
 }
