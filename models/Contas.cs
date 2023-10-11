@@ -14,23 +14,27 @@ namespace projeto2023.models
         public decimal SaldoInicial_conta { get; set; }
         public string Descricao_conta { get; set; }
 
-        public Contas(int idConta, string nomeConta, string tipo, decimal saldoIni, string desc)
+        public int cont_status;
+
+        public Contas(int idConta, string nomeConta, string tipo, decimal saldoIni, string desc, int contStatus)
         {
             Id_conta = idConta;
             Nome_conta = nomeConta;
             TipoConta_conta = tipo;
             SaldoInicial_conta = saldoIni;
             Descricao_conta = desc;
+            cont_status = contStatus;
         }
 
 
-        public Contas(string nomeConta, string tipo, decimal saldoIni, string desc)
+        public Contas(string nomeConta, string tipo, decimal saldoIni, string desc, int contStatus)
         {
            
             Nome_conta = nomeConta;
             TipoConta_conta = tipo;
             SaldoInicial_conta = saldoIni;
             Descricao_conta = desc;
+            cont_status = contStatus;
         }
 
     }
