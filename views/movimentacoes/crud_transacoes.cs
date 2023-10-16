@@ -12,9 +12,9 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace projeto2023.views.movimentacoes
 {
-    public partial class crud_movimentacoes : Form
+    public partial class crud_transacoes : Form
     {
-        public crud_movimentacoes()
+        public crud_transacoes()
         {
             InitializeComponent();
         }

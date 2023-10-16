@@ -829,7 +829,7 @@ namespace projeto2023.controllers
         public void InsertMovimentacao(Movimentacoes movimentacao)
         {
             Cmd.Connection = Con.RetornarConexao();
-            Cmd.CommandText = @"INSERT INTO  Movimentacoes VALUES (@Data, @Valor, @Descricao, @TipoTransacao, @CategoriaId, @ContaBancariaId, @CentroDeCustoId)";
+            Cmd.CommandText = @"INSERT INTO  Movimentacoes VALUES (@Data, @Valor, @Descricao, @TipoTransacao, @CategoriaId, @ContaBancariaId, @CentroDeCustoId, @status_movimentacao)";
 
             // definindo sql de insersão e atribuindo os parâmetros
 
@@ -840,6 +840,9 @@ namespace projeto2023.controllers
             Cmd.Parameters.AddWithValue("@CategoriaId", movimentacao.CategoriaId_mov);
             Cmd.Parameters.AddWithValue("@ContaBancariaId", movimentacao.ContaBancariaId_mov);
             Cmd.Parameters.AddWithValue("@CentroDeCustoId", movimentacao.CentroDeCustoId_mov);
+            Cmd.Parameters.AddWithValue("@status_movimentacao", movimentacao.status_mov);
+
+            
             try
             {
                 Cmd.ExecuteNonQuery();
@@ -855,7 +858,7 @@ namespace projeto2023.controllers
         public void UpdateMovimentacao(Movimentacoes movimentacao)
         {
             Cmd.Connection = Con.RetornarConexao();
-            Cmd.CommandText = @"UPDATE Movimentacoes SET  Id = @idmov, Data = @Data_mov, Valor = @Valor_mov, Descricao = @Descricao_mov, TipoTransacao = @TipoTransacao_mov, CategoriaId = @CategoriaId_mov, ContaBancariaId = @ContaBancariaId_mov, CentroDeCustoId = @CentroDeCustoId_mov WHERE status_Movimentacao = @status_mov";
+            Cmd.CommandText = @"UPDATE Movimentacoes SET  Id = @idmov, Data = @Data_mov, Valor = @Valor_mov, Descricao = @Descricao_mov, TipoTransacao = @TipoTransacao_mov, CategoriaId = @CategoriaId_mov, ContaBancariaId = @ContaBancariaId_mov, CentroDeCustoId = @CentroDeCustoId_mov WHERE status_movimentacao = @status_mov";
 
         }
 
@@ -863,7 +866,7 @@ namespace projeto2023.controllers
         public void DeleteMovimentacao(int movimentoCod)
         {
             Cmd.Connection = Con.RetornarConexao();
-            Cmd.CommandText = @"UPDATE Movimentacoes SET  status_Movimentacao = 0 WHERE Id = @idmov";
+            Cmd.CommandText = @"UPDATE Movimentacoes SET  status_movimentacao = 0 WHERE Id = @idmov";
             Cmd.Parameters.AddWithValue("@status_mov", movimentoCod);
             try
             {
@@ -1111,7 +1114,7 @@ namespace projeto2023.controllers
         public void InsertReceita(Receita receita)
         {
             Cmd.Connection = Con.RetornarConexao();
-            Cmd.CommandText = @"INSERT INTO  Receitas VALUES (@Data, @Valor, @codigo_CategoriaID, @codigo_cbancariaID, @codigo_ccustoID, @Descricao)";
+            Cmd.CommandText = @"INSERT INTO  Receitas VALUES (@Data, @Valor, @codigo_CategoriaID, @codigo_cbancariaID, @codigo_ccustoID, @Descricao, @status_Receita)";
 
             // definindo sql de insersão e atribuindo os parâmetros
 
@@ -1121,7 +1124,9 @@ namespace projeto2023.controllers
             Cmd.Parameters.AddWithValue("@codigo_cbancariaID", receita.ContaBancariaId_receita); 
             Cmd.Parameters.AddWithValue("@codigo_ccustoID", receita.CentroDeCustoId_receita);
             Cmd.Parameters.AddWithValue("@Descricao", receita.Descricao_receita);
+            Cmd.Parameters.AddWithValue("@status_Receita", receita.status);
 
+            
 
 
             try
@@ -1139,16 +1144,17 @@ namespace projeto2023.controllers
         public void UpdateReceita(Receita receita)
         {
             Cmd.Connection = Con.RetornarConexao();
-            Cmd.CommandText = @"UPDATE Receitas SET  Data = @Data_receita, Valor = @Valor_receita, codigo_CategoriaID = @CategoriaId_receita, codigo_cbancariaID = @ContaBancariaId_receita, codigo_ccustoID = @CentroDeCustoId_receita   WHERE Id = @Id_receita";
+            Cmd.CommandText = @"UPDATE Receitas SET  Data = @Data_receita, Valor = @Valor_receita, codigo_CategoriaID = @CategoriaId_receita, codigo_cbancariaID = @ContaBancariaId_receita, codigo_ccustoID = @CentroDeCustoId_receita, status_Receita = @status  WHERE codigo_Receita = @Id_receita";
            
         }
 
         // Método para excluir a movimentação financeira
         public void DeleteReceita(int receitaCod)
         {
-           /* Cmd.Connection = Con.RetornarConexao();
-            Cmd.CommandText = @"UPDATE Receitas SET  status_conta = 0 WHERE Id = @Id_conta";
-            Cmd.Parameters.AddWithValue("@Id_conta", contaCod);
+           
+            Cmd.Connection = Con.RetornarConexao();
+            Cmd.CommandText = @"UPDATE Receitas SET  status_Receita = 0 WHERE codigo_Receita = @Id_receita";
+            Cmd.Parameters.AddWithValue("@Id_receita", receitaCod);
             try
             {
                 Cmd.ExecuteNonQuery();
@@ -1161,14 +1167,15 @@ namespace projeto2023.controllers
             {
                 Con.FecharConexao();
             }
-           */
+           
+           
         }
 
         // método para ler todo banco de dados e retornar as informações em uma lista
         public List<Receita> ListarReceita()
         {
             Cmd.Connection = Con.RetornarConexao();
-            Cmd.CommandText = "SELECT * FROM Receitas where status_conta = 1";
+            Cmd.CommandText = "SELECT * FROM Receitas where status_Receita = 1";
 
             List<Receita> listaReceita = new List<Receita>();
             try
@@ -1178,7 +1185,7 @@ namespace projeto2023.controllers
                 while (rd.Read())
                 {
 
-                    Receita receita = new Receita((int)rd["Id"], (DateTime)rd["Data"], (decimal)rd["Valor"], (int)rd["codigo_CategoriaID"], (int)rd["codigo_cbancariaID"], (int)rd["codigo_ccustoID"], (string)rd["Descricao"]);
+                    Receita receita = new Receita((int)rd["codigo_Receita"], (DateTime)rd["Data"], (decimal)rd["Valor"], (int)rd["codigo_CategoriaID"], (int)rd["codigo_cbancariaID"], (int)rd["codigo_ccustoID"], (string)rd["Descricao"], (string)rd["status_Receita"]);
 
 
                     listaReceita.Add(receita);
@@ -1209,7 +1216,7 @@ namespace projeto2023.controllers
         public void InsertDespesa(Despesas despesas)
         {
             Cmd.Connection = Con.RetornarConexao();
-            Cmd.CommandText = @"INSERT INTO  Despesas VALUES (@Data, @Valor, @codigo_CategoriaID, @codigo_cbancariaID, @codigo_ccustoID, @Descricao)";
+            Cmd.CommandText = @"INSERT INTO  Despesas VALUES (@Data, @Valor, @codigo_CategoriaID, @codigo_cbancariaID, @codigo_ccustoID, @Descricao, @status_Despesa)";
 
             // definindo sql de insersão e atribuindo os parâmetros
 
@@ -1219,8 +1226,8 @@ namespace projeto2023.controllers
             Cmd.Parameters.AddWithValue("@codigo_cbancariaID", despesas.ContaBancariaId_despesa);
             Cmd.Parameters.AddWithValue("@codigo_ccustoID", despesas.CentroDeCustoId_despesa);
             Cmd.Parameters.AddWithValue("@Descricao", despesas.Descricao_despesa);
-
-
+            Cmd.Parameters.AddWithValue("@status_Despesa", despesas.status);
+            
 
             try
             {
@@ -1234,40 +1241,38 @@ namespace projeto2023.controllers
         }
 
         // Método de alteração, necessário informar todos os parâmetros, considerando que não se sabe qual será alterado
-        public void UpdateDespesa(Despesas conta)
+        public void UpdateDespesa(Despesas despesas)
         {
             Cmd.Connection = Con.RetornarConexao();
-            Cmd.CommandText = @"UPDATE Despesas SET  Data = @Data_despesa, Valor = @Valor_despesa, codigo_CategoriaID = @CategoriaId_despesa, codigo_cbancariaID = @ContaBancariaId_despesa, codigo_ccustoID = @CentroDeCustoId_despesa   WHERE Id = @Id_despesa";
-
+            Cmd.CommandText = @"UPDATE Despesas SET  Data = @Data_despesa, Valor = @Valor_despesa, codigo_CategoriaID = @CategoriaId_despesa, codigo_cbancariaID = @ContaBancariaId_despesa, codigo_ccustoID = @CentroDeCustoId_despesa, status_Despesa = @status   WHERE codigo_Despesa = @Id_despesa";
         }
 
         // Método para excluir a movimentação financeira
-        public void DeleteDespesa(int contaCod)
+        public void DeleteDespesa(int despesasCod)
         {
-            /*
-             Cmd.Connection = Con.RetornarConexao();
-             Cmd.CommandText = @"UPDATE Despesas SET  status_conta = 0 WHERE Id = @Id_conta";
-             Cmd.Parameters.AddWithValue("@Id_conta", contaCod);
-             try
-             {
-                 Cmd.ExecuteNonQuery();
-             }
-             catch (Exception erro)
-             {
-                 throw new Exception("Erro problemas excluir receita do banco de dados. \n" + erro.Message);
-             }
-             finally
-             {
-                 Con.FecharConexao();
-             }
-            */
+            Cmd.Connection = Con.RetornarConexao();
+            Cmd.CommandText = @"UPDATE Despesas SET  status_Despesa = 0 WHERE codigo_Despesa = @Id_despesa";
+            Cmd.Parameters.AddWithValue("@Id_despesa", despesasCod);
+            try
+            {
+                Cmd.ExecuteNonQuery();
+            }
+            catch (Exception erro)
+            {
+                throw new Exception("Erro problemas excluir despesa do banco de dados. \n" + erro.Message);
+            }
+            finally
+            {
+                Con.FecharConexao();
+            }
+
         }
 
         // método para ler todo banco de dados e retornar as informações em uma lista
         public List<Despesas> ListarDespesa()
         {
             Cmd.Connection = Con.RetornarConexao();
-            Cmd.CommandText = "SELECT * FROM Despesas where status_conta = 1";
+            Cmd.CommandText = "SELECT * FROM Despesas where status_Despesa = 1";
 
             List<Despesas> listaDespesa = new List<Despesas>();
             try
@@ -1277,7 +1282,7 @@ namespace projeto2023.controllers
                 while (rd.Read())
                 {
 
-                    Despesas despesa = new Despesas((int)rd["Id"], (DateTime)rd["Data"], (decimal)rd["Valor"], (int)rd["codigo_CategoriaID"], (int)rd["codigo_cbancariaID"], (int)rd["codigo_ccustoID"], (string)rd["Descricao"]);
+                    Despesas despesa = new Despesas((int)rd["codigo_Despesa"], (DateTime)rd["Data"], (decimal)rd["Valor"], (int)rd["codigo_CategoriaID"], (int)rd["codigo_cbancariaID"], (int)rd["codigo_ccustoID"], (string)rd["Descricao"], (string)rd["status_Despesa"]);
 
 
                     listaDespesa.Add(despesa);
@@ -1297,25 +1302,387 @@ namespace projeto2023.controllers
             return listaDespesa;
           
         }
-          
 
+
+        #endregion
+
+
+        #region CCUSTO
+        // método booleano para informar se obteve sucesso ao salvar as informações no banco de dado
+        public void InsertCCusto(Centro_Custo ccusto)
+        {
+            Cmd.Connection = Con.RetornarConexao();
+            Cmd.CommandText = @"INSERT INTO  CentroCusto VALUES (@Nome, @Descricao, @statusCCusto)";
+
+            // definindo sql de insersão e atribuindo os parâmetros
+
+            Cmd.Parameters.AddWithValue("@Nome", ccusto.Nome);
+            Cmd.Parameters.AddWithValue("@Descricao", ccusto.Descricao);
+            Cmd.Parameters.AddWithValue("@statusCCusto", ccusto.status);
+            
+
+            try
+            {
+                Cmd.ExecuteNonQuery();
+                Con.FecharConexao();
+            }
+            catch (Exception erro)
+            {
+                throw new Exception("Erro problemas ao inserir a centro de custo ao banco de dados. \n" + erro.Message);
+            }
+        }
+
+        // Método de alteração, necessário informar todos os parâmetros, considerando que não se sabe qual será alterado
+        public void UpdateCCusto(Centro_Custo ccusto)
+        {
+            Cmd.Connection = Con.RetornarConexao();
+            Cmd.CommandText = @"UPDATE CentroCusto SET  Nome = @Nome, Descricao = @Descricao, statusCCusto = @status WHERE codigo_centroCusto = @Id";
+
+        }
+
+        // Método para excluir a movimentação financeira
+        public void DeleteCCusto(int ccustoCod)
+        {
+            
+             Cmd.Connection = Con.RetornarConexao();
+             Cmd.CommandText = @"UPDATE CentroCusto SET  statusCCusto = 0 WHERE codigo_centroCusto = @Id";
+             Cmd.Parameters.AddWithValue("@Id", ccustoCod);
+             try
+             {
+                 Cmd.ExecuteNonQuery();
+             }
+             catch (Exception erro)
+             {
+                 throw new Exception("Erro problemas excluir centro de custo do banco de dados. \n" + erro.Message);
+             }
+             finally
+             {
+                 Con.FecharConexao();
+             }
+            
+        }
+
+        // método para ler todo banco de dados e retornar as informações em uma lista
+        public List<Centro_Custo> ListarCCusto()
+        {
+            Cmd.Connection = Con.RetornarConexao();
+            Cmd.CommandText = "SELECT * FROM CentroCusto where status = 1";
+
+            List<Centro_Custo> listaCCusto = new List<Centro_Custo>();
+            try
+            {
+                SqlDataReader rd = Cmd.ExecuteReader();
+
+                while (rd.Read())
+                {
+
+                    Centro_Custo ccusto = new Centro_Custo((int)rd["codigo_centroCusto"], (string)rd["Nome"], (string)rd["Descricao"], (int)rd["statusCCusto"]);
+
+
+                    listaCCusto.Add(ccusto);
+                }
+                rd.Close();
+            }
+            catch (Exception erro)
+            {
+
+                throw new Exception("Erro: problema ao realizar leitura do banco.\n" + erro.Message);
+            }
+            finally
+            {
+                Con.FecharConexao();
+            }
+
+            return listaCCusto;
+        }
         #endregion
 
 
         #region SANGRIA
+
+        // método booleano para informar se obteve sucesso ao salvar as informações no banco de dado
+        public void InsertSangria(SangriaCaixa sangria)
+        {
+            Cmd.Connection = Con.RetornarConexao();
+            Cmd.CommandText = @"INSERT INTO  SangriaCX VALUES (@Data, @Valor, @Descricao, @status_sangriaCX)";
+
+            // definindo sql de insersão e atribuindo os parâmetros
+
+            Cmd.Parameters.AddWithValue("@Data", sangria.DataSangria);
+            Cmd.Parameters.AddWithValue("@Valor", sangria.Valor);
+            Cmd.Parameters.AddWithValue("@Descricao", sangria.Descricao);
+            Cmd.Parameters.AddWithValue("@status_sangriaCX", sangria.status);
+
+
+
+            try
+            {
+                Cmd.ExecuteNonQuery();
+                Con.FecharConexao();
+            }
+            catch (Exception erro)
+            {
+                throw new Exception("Erro problemas ao inserir a sangria ao banco de dados. \n" + erro.Message);
+            }
+        }
+
+        // Método de alteração, necessário informar todos os parâmetros, considerando que não se sabe qual será alterado
+        public void UpdateSangria(SangriaCaixa sangria)
+        {
+            Cmd.Connection = Con.RetornarConexao();
+            Cmd.CommandText = @"UPDATE SangriaCX SET  Data = @DataSangria, Valor = @Valor, Descricao = @Descricao, status_sangriaCX = @status WHERE codigo_SangriaCX = @Id";
+
+        }
+
+        // Método para excluir a movimentação financeira
+        public void DeleteSangria(int sangriaCod)
+        {
+
+            Cmd.Connection = Con.RetornarConexao();
+            Cmd.CommandText = @"UPDATE SangriaCX SET  status_sangriaCX = 0 WHERE codigo_sangriaCX = @Id";
+            Cmd.Parameters.AddWithValue("@Id", sangriaCod);
+            try
+            {
+                Cmd.ExecuteNonQuery();
+            }
+            catch (Exception erro)
+            {
+                throw new Exception("Erro problemas excluir sangria do banco de dados. \n" + erro.Message);
+            }
+            finally
+            {
+                Con.FecharConexao();
+            }
+
+        }
+
+        // método para ler todo banco de dados e retornar as informações em uma lista
+        public List<SangriaCaixa> ListarSangria()
+        {
+            Cmd.Connection = Con.RetornarConexao();
+            Cmd.CommandText = "SELECT * FROM SangriaCX where status = 1";
+
+            List<SangriaCaixa> listaSangria = new List<SangriaCaixa>();
+            try
+            {
+                SqlDataReader rd = Cmd.ExecuteReader();
+
+                while (rd.Read())
+                {
+
+                    SangriaCaixa sangria = new SangriaCaixa((int)rd["codigo_sangriaCX"],(DateTime)rd["Data"], (decimal)rd["Valor"], (string)rd["Descricao"], (int)rd["status_sangriaCX"]);
+
+
+                    listaSangria.Add(sangria);
+                }
+                rd.Close();
+            }
+            catch (Exception erro)
+            {
+
+                throw new Exception("Erro: problema ao realizar leitura do banco.\n" + erro.Message);
+            }
+            finally
+            {
+                Con.FecharConexao();
+            }
+
+            return listaSangria;
+        }
         #endregion
 
 
         #region TRANSACAO
+
+        // método booleano para informar se obteve sucesso ao salvar as informações no banco de dado
+        public void InsertTransacao(Transacao transacao)
+        {
+            Cmd.Connection = Con.RetornarConexao();
+            Cmd.CommandText = @"INSERT INTO  Transacoes VALUES (@Data, @Valor,@categoriaID, @cBancariaID, @cCustoID, @Descricao, @status_transacao)";
+                                                                             
+            // definindo sql de insersão e atribuindo os parâmetros           
+
+            Cmd.Parameters.AddWithValue("@Data", transacao.Data) ;
+            Cmd.Parameters.AddWithValue("@Valor", transacao.Valor);
+            Cmd.Parameters.AddWithValue("@categoriaID", transacao.CategoriaId);
+            Cmd.Parameters.AddWithValue("@cBancariaID", transacao.ContaBancariaId);
+            Cmd.Parameters.AddWithValue("@cCustoID", transacao.CentroDeCustoId);
+            Cmd.Parameters.AddWithValue("@Descricao", transacao.Descricao);
+            Cmd.Parameters.AddWithValue("@status_transacao", transacao.status);
+
+
+            try
+            {
+                Cmd.ExecuteNonQuery();
+                Con.FecharConexao();
+            }
+            catch (Exception erro)
+            {
+                throw new Exception("Erro problemas ao inserir a transacao ao banco de dados. \n" + erro.Message);
+            }
+        }
+
+        // Método de alteração, necessário informar todos os parâmetros, considerando que não se sabe qual será alterado
+        public void UpdateTransacao(Transacao transacao)
+        {
+            Cmd.Connection = Con.RetornarConexao();
+            Cmd.CommandText = @"UPDATE Transacoes SET  Data = @Data, Valor = @Valor, categoriaID = @CategoriaId, cBancariaID = @ContaBancariaId, cCustoID = @CentroDeCustoId, Descricao = @Descricao, status_transacao = @status WHERE codigo_transacao = @Id";
+
+        }
+
+        // Método para excluir a movimentação financeira
+        public void DeleteTransacao(int transacaoCod)
+        {
+
+            Cmd.Connection = Con.RetornarConexao();
+            Cmd.CommandText = @"UPDATE Transacoes SET  status_transacao = 0 WHERE codigo_transacao = @Id";
+            Cmd.Parameters.AddWithValue("@Id", transacaoCod);
+            try
+            {
+                Cmd.ExecuteNonQuery();
+            }
+            catch (Exception erro)
+            {
+                throw new Exception("Erro problemas excluir transacao do banco de dados. \n" + erro.Message);
+            }
+            finally
+            {
+                Con.FecharConexao();
+            }
+
+        }
+
+        // método para ler todo banco de dados e retornar as informações em uma lista
+        public List<Transacao> ListarTransacao()
+        {
+            Cmd.Connection = Con.RetornarConexao();
+            Cmd.CommandText = "SELECT * FROM Transacoes where status = 1";
+
+            List<Transacao> listaTransacao = new List<Transacao>();
+            try
+            {
+                SqlDataReader rd = Cmd.ExecuteReader();
+
+                while (rd.Read())
+                {
+
+                    Transacao transacao = new Transacao((int)rd["codigo_transacao"], (DateTime)rd["Data"], (decimal)rd["Valor"], (int)rd["categoriaID"], (int)rd["cBancariaID"], (int)rd["cCustoID"],(string)rd["Descricao"], (int)rd["status_transacao"]);
+                                                                                                                                          
+                    listaTransacao.Add(transacao);
+                }
+                rd.Close();
+            }
+            catch (Exception erro)
+            {
+
+                throw new Exception("Erro: problema ao realizar leitura do banco.\n" + erro.Message);
+            }
+            finally
+            {
+                Con.FecharConexao();
+            }
+
+            return listaTransacao;
+        }
         #endregion
 
 
         #region FECHAMENTO
+
+        // método booleano para informar se obteve sucesso ao salvar as informações no banco de dado
+        public void InsertFechamentoCX(FechamentoCaixa fechamentoCX)
+        {
+            Cmd.Connection = Con.RetornarConexao();
+            Cmd.CommandText = @"INSERT INTO  FechamentoCX VALUES (@Data, @SaldoInicial,@Transacao, @SaldoFinal, @status_fechamento)";
+
+            // definindo sql de insersão e atribuindo os parâmetros           
+
+            Cmd.Parameters.AddWithValue("@Data", fechamentoCX.DataFechamento);
+            Cmd.Parameters.AddWithValue("@SaldoInicial", fechamentoCX.SaldoInicial);
+            Cmd.Parameters.AddWithValue("@Transacoes", fechamentoCX.Transacoes); // fica o id da transação
+            Cmd.Parameters.AddWithValue("@SaldoFinal", fechamentoCX.SaldoFinal);
+            Cmd.Parameters.AddWithValue("@status_fechamento", fechamentoCX.status);
+
+            try
+            {
+                Cmd.ExecuteNonQuery();
+                Con.FecharConexao();
+            }
+            catch (Exception erro)
+            {
+                throw new Exception("Erro problemas ao inserir a fechamento  ao banco de dados. \n" + erro.Message);
+            }
+        }
+
+        // Método de alteração, necessário informar todos os parâmetros, considerando que não se sabe qual será alterado
+        public void UpdateFechamentoCX(FechamentoCaixa fechamentoCX)
+        {
+            Cmd.Connection = Con.RetornarConexao();
+            Cmd.CommandText = @"UPDATE FechamentoCX SET  Data = @DataFechamento, SaldoInicial = @SaldoInicial, Transacoes = @Transacoes, SaldoFinal = @SaldoFinal, status_fechamento = @status WHERE codigo_fechamentoCX = @Id";
+
+        }
+
+        // Método para excluir a movimentação financeira
+        public void DeleteFechamentoCX(int fechamentoCXCod)
+        {
+
+            Cmd.Connection = Con.RetornarConexao();
+            Cmd.CommandText = @"UPDATE FechamentoCX SET  status_fechamento = 0 WHERE codigo_fechamentoCX = @Id";
+            Cmd.Parameters.AddWithValue("@Id", fechamentoCXCod);
+            try
+            {
+                Cmd.ExecuteNonQuery();
+            }
+            catch (Exception erro)
+            {
+                throw new Exception("Erro problemas excluir fechamento do banco de dados. \n" + erro.Message);
+            }
+            finally
+            {
+                Con.FecharConexao();
+            }
+
+        }
+
+        // método para ler todo banco de dados e retornar as informações em uma lista
+        public List<FechamentoCaixa> ListarFechamentoCX()
+        {
+            Cmd.Connection = Con.RetornarConexao();
+            Cmd.CommandText = "SELECT * FROM FechamentoCX where status = 1";
+
+            List<FechamentoCaixa> listafechamentoCX = new List<FechamentoCaixa>();
+            try
+            {
+                SqlDataReader rd = Cmd.ExecuteReader();
+
+                while (rd.Read())
+                {
+
+                    FechamentoCaixa fechamentoCX = new FechamentoCaixa((int)rd["codigo_fechamentoCX"], (DateTime)rd["Data"], (decimal)rd["SaldoInicial"], (List<Transacao>)rd["Transacoes"], (decimal)rd["SaldoFinal"], (int)rd["status_fechamentoCX"]);
+
+                    listafechamentoCX.Add(fechamentoCX);
+                }
+                rd.Close();
+            }
+            catch (Exception erro)
+            {
+
+                throw new Exception("Erro: problema ao realizar leitura do banco.\n" + erro.Message);
+            }
+            finally
+            {
+                Con.FecharConexao();
+            }
+
+            return listafechamentoCX;
+        }
 
         #endregion
 
 
         #region ESTOQUE
         #endregion
+
+
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace projeto2023.views.movimentacoes
 {
-    partial class consulta_movimentacoes
+    partial class consulta_transacoes
     {
         /// <summary>
         /// Required designer variable.

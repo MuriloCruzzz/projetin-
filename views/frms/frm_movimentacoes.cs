@@ -36,7 +36,7 @@ namespace projeto2023.views.frms
 
         private void btn_Transacoes_Click(object sender, EventArgs e)
         {
-            crud_movimentacoes frm = new crud_movimentacoes();
+            crud_transacoes frm = new crud_transacoes();
             frm.ShowDialog();
         }
 
@@ -55,7 +55,7 @@ namespace projeto2023.views.frms
         private void btn_estoque_Click(object sender, EventArgs e)
         {
             crud_estoque frm = new crud_estoque();
-            frm.ShowDialog():
+            frm.ShowDialog();
         }
 
         private void lbl_voltar_Click(object sender, EventArgs e)

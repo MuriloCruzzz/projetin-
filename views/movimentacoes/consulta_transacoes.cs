@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace projeto2023.views.movimentacoes
 {
-    public partial class consulta_movimentacoes : Form
+    public partial class consulta_transacoes : Form
     {
-        public consulta_movimentacoes()
+        public consulta_transacoes()
         {
             InitializeComponent();
         }

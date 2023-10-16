@@ -1,6 +1,6 @@
 ﻿namespace projeto2023.views.movimentacoes
 {
-    partial class crud_movimentacoes
+    partial class crud_transacoes
     {
         /// <summary>
         /// Required designer variable.
@@ -116,7 +116,7 @@
             this.label14.Location = new System.Drawing.Point(25, 747);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(90, 22);
+            this.label14.Size = new System.Drawing.Size(89, 22);
             this.label14.TabIndex = 21;
             this.label14.Text = "VOLTAR";
             // 
@@ -140,9 +140,9 @@
             this.lbl_cadastroMov.Location = new System.Drawing.Point(545, 50);
             this.lbl_cadastroMov.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_cadastroMov.Name = "lbl_cadastroMov";
-            this.lbl_cadastroMov.Size = new System.Drawing.Size(409, 56);
+            this.lbl_cadastroMov.Size = new System.Drawing.Size(303, 55);
             this.lbl_cadastroMov.TabIndex = 31;
-            this.lbl_cadastroMov.Text = "Movimentações";
+            this.lbl_cadastroMov.Text = "Transações";
             // 
             // lbl_dataNasc
             // 
@@ -151,7 +151,7 @@
             this.lbl_dataNasc.Location = new System.Drawing.Point(888, 157);
             this.lbl_dataNasc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_dataNasc.Name = "lbl_dataNasc";
-            this.lbl_dataNasc.Size = new System.Drawing.Size(163, 17);
+            this.lbl_dataNasc.Size = new System.Drawing.Size(166, 17);
             this.lbl_dataNasc.TabIndex = 30;
             this.lbl_dataNasc.Text = "Data Movimentação";
             // 
@@ -219,7 +219,7 @@
             this.label6.Location = new System.Drawing.Point(64, 365);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(84, 17);
+            this.label6.Size = new System.Drawing.Size(85, 17);
             this.label6.TabIndex = 18;
             this.label6.Text = "Descrição";
             // 
@@ -230,7 +230,7 @@
             this.label3.Location = new System.Drawing.Point(64, 307);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(54, 17);
+            this.label3.Size = new System.Drawing.Size(55, 17);
             this.label3.TabIndex = 15;
             this.label3.Text = "Conta";
             // 
@@ -241,7 +241,7 @@
             this.label2.Location = new System.Drawing.Point(64, 235);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(135, 17);
+            this.label2.Size = new System.Drawing.Size(134, 17);
             this.label2.TabIndex = 14;
             this.label2.Text = "Centro de Custo";
             // 
@@ -252,7 +252,7 @@
             this.label1.Location = new System.Drawing.Point(68, 162);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 17);
+            this.label1.Size = new System.Drawing.Size(85, 17);
             this.label1.TabIndex = 13;
             this.label1.Text = "Categoria";
             // 
@@ -282,7 +282,7 @@
             this.cmb_centroCusto.Size = new System.Drawing.Size(176, 21);
             this.cmb_centroCusto.TabIndex = 1;
             // 
-            // crud_movimentacoes
+            // crud_transacoes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -291,7 +291,7 @@
             this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(62)))), ((int)(((byte)(111)))));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.Name = "crud_movimentacoes";
+            this.Name = "crud_transacoes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "crud_movimentacoes";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

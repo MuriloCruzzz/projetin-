@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,9 +21,9 @@ namespace projeto2023.models
         public Centro_Custo CentroDeCusto_receita { get; set; } // Adicionado relacionamento com CentroDeCusto
         public string Descricao_receita { get; set; }
 
+        public string status;
 
-
-        public Receita(int id, DateTime data, decimal valor, int categoriaID, int cbancariaID,  int ccustoID, string desc)
+        public Receita(int id, DateTime data, decimal valor, int categoriaID, int cbancariaID,  int ccustoID, string desc, string status_receita)
         {
             Id_receita = id;
             Data_receita = data;
@@ -29,9 +31,10 @@ namespace projeto2023.models
             CategoriaId_receita = categoriaID;
             ContaBancariaId_receita = cbancariaID;
             CentroDeCustoId_receita = ccustoID;
-            Descricao_receita = desc;   
+            Descricao_receita = desc;
+            status = status_receita;
         }
-        public Receita( DateTime data, decimal valor, int categoriaID, int cbancariaID, int ccustoID, string desc)
+        public Receita( DateTime data, decimal valor, int categoriaID, int cbancariaID, int ccustoID, string desc, string status_receita)
         {
             Data_receita = data;
             Valor_receita = valor;
@@ -39,6 +42,7 @@ namespace projeto2023.models
             ContaBancariaId_receita = cbancariaID;
             CentroDeCustoId_receita = ccustoID;
             Descricao_receita = desc;
+            status = status_receita;
         }
     }
 }

@@ -19,8 +19,10 @@ namespace projeto2023.models
         public Centro_Custo CentroDeCusto_despesa { get; set; } // Adicionado relacionamento com CentroDeCusto
         public string Descricao_despesa { get; set; }
 
+        public string status;
 
-        public Despesas(int id, DateTime data, decimal valor, int categoriaID, int cbancariaID, int ccustoID, string desc)
+
+        public Despesas(int id, DateTime data, decimal valor, int categoriaID, int cbancariaID, int ccustoID, string desc, string status_despesa)
         {
             Id_despesa = id;
             Data_despesa = data;
@@ -29,8 +31,10 @@ namespace projeto2023.models
             ContaBancariaId_despesa = cbancariaID;
             CentroDeCustoId_despesa = ccustoID;
             Descricao_despesa = desc;
+            status = status_despesa;
         }
-        public Despesas(DateTime data, decimal valor, int categoriaID, int cbancariaID, int ccustoID, string desc)
+        public Despesas(DateTime data, decimal valor, int categoriaID, int cbancariaID, int ccustoID, string desc, string status_despesa)
+
         {
             Data_despesa = data;
             Valor_despesa = valor;
@@ -38,6 +42,7 @@ namespace projeto2023.models
             ContaBancariaId_despesa = cbancariaID;
             CentroDeCustoId_despesa = ccustoID;
             Descricao_despesa = desc;
+            status = status_despesa;
         }
 
     }
